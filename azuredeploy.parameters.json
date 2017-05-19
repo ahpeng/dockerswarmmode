@@ -1,0 +1,39 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "agentCount": {
+      "value": 2
+    },
+    "agentEndpointDNSNamePrefix": {
+      "value": "pipagent"
+    },
+    "agentSubnet": {
+      "value": "10.0.0.0/16"
+    },
+    "agentVMSize": {
+      "value": "Standard_D2_v2"
+    },
+    "firstConsecutiveStaticIP": {
+      "value": "172.16.0.5"
+    },
+    "linuxAdminUsername": {
+      "value": "azureuser"
+    },
+    "masterEndpointDNSNamePrefix": {
+      "value": "pipmaster"
+    },
+    "masterSubnet": {
+      "value": "172.16.0.0/24"
+    },
+    "masterVMSize": {
+      "value": "Standard_D2_v2"
+    },
+    "sshRSAPublicKey": {
+      "value": ""
+    },
+    "targetEnvironment": {
+      "value": "AzurePublicCloud"
+    }
+  }
+}
