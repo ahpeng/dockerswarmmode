@@ -30,7 +30,7 @@
       "value": "Standard_D2_v2"
     },
     "sshRSAPublicKey": {
-      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC78nMWxpehZ8oU+WHm3307gY7VjMswO5RYbGiGYDBkuQsRfRSygdcLzhCGuAh8mq9YrJGiY7x9UtErggGZhiHd3feR3JEtnD4U3kGTywfhzabsEoI1ixqc/HyAL8Q48Ya3MJPfzk8bcKI8fcYq+ZvGC5iGECPEmN1qIlu54ZidYTDAXBBNnletQeEaHI7vKHL29Ii2TbDEtsdYbpebSezHL9/3fiYynLT/VZE0uu0Bd1v7REhUU0dnfsjGIeouOny9pYao1W/i0rT8fNiAsVj9x8A0uUFeDz/+PshwD74OSigSvW5DkVbe3OAiH65RkBs/O1QMy7RX81BDfY8kdgiX"
+      "value": ""
     },
     "targetEnvironment": {
       "value": "AzurePublicCloud"

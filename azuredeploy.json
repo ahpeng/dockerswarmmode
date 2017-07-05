@@ -452,7 +452,7 @@
     "osImageOffer": "UbuntuServer",
     "osImagePublisher": "Canonical",
     "osImageSKU": "16.04.0-LTS",
-    "osImageVersion": "16.04.201606270",
+    "osImageVersion": "1.0.0",
     "postInstallScriptURI": "disabled",
     "sshKeyPath": "[concat('/home/', variables('adminUsername'), '/.ssh/authorized_keys')]",
     "sshRSAPublicKey": "[parameters('sshRSAPublicKey')]",
