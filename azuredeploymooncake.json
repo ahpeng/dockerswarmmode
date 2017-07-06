@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "agentCount": {
+    "agentpublicCount": {
       "allowedValues": [
         1,
         2,
@@ -111,24 +111,21 @@
       },
       "type": "int"
     },
-    "agentEndpointDNSNamePrefix": {
+    "agentpublicEndpointDNSNamePrefix": {
       "metadata": {
         "description": "Sets the Domain name label for the agent pool IP Address.  The concatenation of the domain name label and the regional DNS zone make up the fully qualified domain name associated with the public IP address."
       },
       "type": "string"
     },
-    "agentSubnet": {
+    "agentpublicSubnet": {
       "defaultValue": "10.0.0.0/16",
       "metadata": {
-        "description": "Sets the subnet of agent pool 'agent'."
+        "description": "Sets the subnet of agent pool 'agentpublic'."
       },
       "type": "string"
     },
-    "agentVMSize": {
+    "agentpublicVMSize": {
       "allowedValues": [
-        "Basic_A2",
-        "Basic_A3",
-        "Basic_A4",
         "Standard_A10",
         "Standard_A11",
         "Standard_A2",
@@ -147,36 +144,52 @@
         "Standard_A9",
         "Standard_D11",
         "Standard_D11_v2",
+        "Standard_D11_v2_Promo",
         "Standard_D12",
         "Standard_D12_v2",
+        "Standard_D12_v2_Promo",
         "Standard_D13",
         "Standard_D13_v2",
+        "Standard_D13_v2_Promo",
         "Standard_D14",
         "Standard_D14_v2",
+        "Standard_D14_v2_Promo",
         "Standard_D15_v2",
         "Standard_D2",
         "Standard_D2_v2",
+        "Standard_D2_v2_Promo",
         "Standard_D3",
         "Standard_D3_v2",
+        "Standard_D3_v2_Promo",
         "Standard_D4",
         "Standard_D4_v2",
+        "Standard_D4_v2_Promo",
         "Standard_D5_v2",
+        "Standard_D5_v2_Promo",
         "Standard_DS11",
         "Standard_DS11_v2",
+        "Standard_DS11_v2_Promo",
         "Standard_DS12",
         "Standard_DS12_v2",
+        "Standard_DS12_v2_Promo",
         "Standard_DS13",
         "Standard_DS13_v2",
+        "Standard_DS13_v2_Promo",
         "Standard_DS14",
         "Standard_DS14_v2",
+        "Standard_DS14_v2_Promo",
         "Standard_DS15_v2",
         "Standard_DS2",
         "Standard_DS2_v2",
+        "Standard_DS2_v2_Promo",
         "Standard_DS3",
         "Standard_DS3_v2",
+        "Standard_DS3_v2_Promo",
         "Standard_DS4",
         "Standard_DS4_v2",
+        "Standard_DS4_v2_Promo",
         "Standard_DS5_v2",
+        "Standard_DS5_v2_Promo",
         "Standard_F16",
         "Standard_F16s",
         "Standard_F2",
@@ -201,6 +214,13 @@
         "Standard_H16r",
         "Standard_H8",
         "Standard_H8m",
+        "Standard_L16s",
+        "Standard_L32s",
+        "Standard_L4s",
+        "Standard_L8s",
+        "Standard_M128ms",
+        "Standard_M128s",
+        "Standard_M64ms",
         "Standard_NC12",
         "Standard_NC24",
         "Standard_NC24r",
@@ -250,9 +270,6 @@
     },
     "masterVMSize": {
       "allowedValues": [
-        "Basic_A2",
-        "Basic_A3",
-        "Basic_A4",
         "Standard_A10",
         "Standard_A11",
         "Standard_A2",
@@ -271,36 +288,52 @@
         "Standard_A9",
         "Standard_D11",
         "Standard_D11_v2",
+        "Standard_D11_v2_Promo",
         "Standard_D12",
         "Standard_D12_v2",
+        "Standard_D12_v2_Promo",
         "Standard_D13",
         "Standard_D13_v2",
+        "Standard_D13_v2_Promo",
         "Standard_D14",
         "Standard_D14_v2",
+        "Standard_D14_v2_Promo",
         "Standard_D15_v2",
         "Standard_D2",
         "Standard_D2_v2",
+        "Standard_D2_v2_Promo",
         "Standard_D3",
         "Standard_D3_v2",
+        "Standard_D3_v2_Promo",
         "Standard_D4",
         "Standard_D4_v2",
+        "Standard_D4_v2_Promo",
         "Standard_D5_v2",
+        "Standard_D5_v2_Promo",
         "Standard_DS11",
         "Standard_DS11_v2",
+        "Standard_DS11_v2_Promo",
         "Standard_DS12",
         "Standard_DS12_v2",
+        "Standard_DS12_v2_Promo",
         "Standard_DS13",
         "Standard_DS13_v2",
+        "Standard_DS13_v2_Promo",
         "Standard_DS14",
         "Standard_DS14_v2",
+        "Standard_DS14_v2_Promo",
         "Standard_DS15_v2",
         "Standard_DS2",
         "Standard_DS2_v2",
+        "Standard_DS2_v2_Promo",
         "Standard_DS3",
         "Standard_DS3_v2",
+        "Standard_DS3_v2_Promo",
         "Standard_DS4",
         "Standard_DS4_v2",
+        "Standard_DS4_v2_Promo",
         "Standard_DS5_v2",
+        "Standard_DS5_v2_Promo",
         "Standard_F16",
         "Standard_F16s",
         "Standard_F2",
@@ -325,6 +358,13 @@
         "Standard_H16r",
         "Standard_H8",
         "Standard_H8m",
+        "Standard_L16s",
+        "Standard_L32s",
+        "Standard_L4s",
+        "Standard_L8s",
+        "Standard_M128ms",
+        "Standard_M128s",
+        "Standard_M64ms",
         "Standard_NC12",
         "Standard_NC24",
         "Standard_NC24r",
@@ -339,7 +379,7 @@
       "type": "string"
     },
     "nameSuffix": {
-      "defaultValue": "13957614",
+      "defaultValue": "10285173",
       "metadata": {
         "description": "A string hash of the master DNS name to uniquely identify the cluster."
       },
@@ -354,39 +394,36 @@
     "targetEnvironment": {
       "defaultValue": "AzureChinaCloud",
       "metadata": {
-        "description": "The azure deploy environment. Currently support: AzureCloud, AzureChinaCloud"
+        "description": "The azure deploy environment. Currently support: AzurePublicCloud, AzureChinaCloud"
       },
       "type": "string"
     }
   },
   "variables": {
     "adminUsername": "[parameters('linuxAdminUsername')]",
-    "agentAccountName": "[concat(variables('storageAccountBaseName'), 'agnt0')]",
-    "agentCount": "[parameters('agentCount')]",
     "agentCustomScript": "[concat('/usr/bin/nohup /bin/bash -c \"/bin/bash /opt/azure/containers/',variables('configureClusterScriptFile'), ' ',variables('clusterInstallParameters'),' >> /var/log/azure/cluster-bootstrap.log 2>&1 &\" &')]",
-    "agentEndpointDNSNamePrefix": "[tolower(parameters('agentEndpointDNSNamePrefix'))]",
-    "agentIPAddressName": "[concat(variables('orchestratorName'), '-agent-ip-', variables('agentEndpointDNSNamePrefix'), '-', variables('nameSuffix'))]",
-    "agentIndex": 0,
-    "agentLbBackendPoolName": "[concat(variables('orchestratorName'), '-agent-', variables('nameSuffix'))]",
-    "agentLbID": "[resourceId('Microsoft.Network/loadBalancers',variables('agentLbName'))]",
-    "agentLbIPConfigID": "[concat(variables('agentLbID'),'/frontendIPConfigurations/', variables('agentLbIPConfigName'))]",
-    "agentLbIPConfigName": "[concat(variables('orchestratorName'), '-agent-', variables('nameSuffix'))]",
-    "agentLbName": "[concat(variables('orchestratorName'), '-agent-', variables('nameSuffix'))]",
     "agentMaxVMs": 100,
     "agentRunCmd": "[concat('runcmd:\n -  [ /bin/bash, /opt/azure/containers/install-cluster.sh ]\n\n')]",
     "agentRunCmdFile": "[concat(' -  content: |\n        #!/bin/bash\n        ','sudo mkdir -p /var/log/azure\n        ',variables('agentCustomScript'),'\n    path: /opt/azure/containers/install-cluster.sh\n    permissions: \"0744\"\n')]",
-    "agentStorageAccountOffset": "[mul(variables('maxStorageAccountsPerAgent'),0)]",
-    "agentStorageAccountsCount": "[variables('maxStorageAccountsPerAgent')]",
-    "agentSubnet": "[parameters('agentSubnet')]",
-    "agentSubnetName": "[concat(variables('orchestratorName'), '-agentsubnet')]",
-    "agentVMNamePrefix": "[concat(variables('orchestratorName'), '-agent-', variables('nameSuffix'))]",
-    "agentVMSize": "[parameters('agentVMSize')]",
-    "agentVnetSubnetID": "[concat(variables('vnetID'),'/subnets/',variables('agentSubnetName'))]",
+    "agentpublicCount": "[parameters('agentpublicCount')]",
+    "agentpublicEndpointDNSNamePrefix": "[tolower(parameters('agentpublicEndpointDNSNamePrefix'))]",
+    "agentpublicIPAddressName": "[concat(variables('orchestratorName'), '-agent-ip-', variables('agentpublicEndpointDNSNamePrefix'), '-', variables('nameSuffix'))]",
+    "agentpublicIndex": 0,
+    "agentpublicLbBackendPoolName": "[concat(variables('orchestratorName'), '-agentpublic-', variables('nameSuffix'))]",
+    "agentpublicLbID": "[resourceId('Microsoft.Network/loadBalancers',variables('agentpublicLbName'))]",
+    "agentpublicLbIPConfigID": "[concat(variables('agentpublicLbID'),'/frontendIPConfigurations/', variables('agentpublicLbIPConfigName'))]",
+    "agentpublicLbIPConfigName": "[concat(variables('orchestratorName'), '-agentpublic-', variables('nameSuffix'))]",
+    "agentpublicLbName": "[concat(variables('orchestratorName'), '-agentpublic-', variables('nameSuffix'))]",
+    "agentpublicSubnet": "[parameters('agentpublicSubnet')]",
+    "agentpublicSubnetName": "[concat(variables('orchestratorName'), '-agentpublicsubnet')]",
+    "agentpublicVMNamePrefix": "[concat(variables('orchestratorName'), '-agentpublic-', variables('nameSuffix'))]",
+    "agentpublicVMSize": "[parameters('agentpublicVMSize')]",
+    "agentpublicVMSizeTier": "[split(parameters('agentpublicVMSize'),'_')[0]]",
+    "agentpublicVnetSubnetID": "[concat(variables('vnetID'),'/subnets/',variables('agentpublicSubnetName'))]",
     "apiVersionDefault": "2016-03-30",
-    "apiVersionStorage": "2015-06-15",
+    "apiVersionStorageManagedDisks": "2016-04-30-preview",
     "clusterInstallParameters": "[concat(variables('masterCount'), ' ',variables('masterVMNamePrefix'), ' ',variables('masterFirstAddrOctet4'), ' ',variables('adminUsername'),' ',variables('postInstallScriptURI'),' ',variables('masterFirstAddrPrefix'))]",
     "configureClusterScriptFile": "configure-swarmmode-cluster.sh",
-    "dataStorageAccountPrefixSeed": 97,
     "location": "[variables('locations')[mod(add(2,length(parameters('location'))),add(1,length(parameters('location'))))]]",
     "locations": [
       "[resourceGroup().location]",
@@ -438,340 +475,34 @@
     "masterSshInboundNatRuleIdPrefix": "[concat(variables('masterLbID'),'/inboundNatRules/SSH-',variables('masterVMNamePrefix'))]",
     "masterSshPort22InboundNatRuleIdPrefix": "[concat(variables('masterLbID'),'/inboundNatRules/SSHPort22-',variables('masterVMNamePrefix'))]",
     "masterSshPort22InboundNatRuleNamePrefix": "[concat(variables('masterLbName'),'/SSHPort22-',variables('masterVMNamePrefix'))]",
-    "masterStorageAccountName": "[concat(variables('storageAccountBaseName'), '0')]",
     "masterSubnet": "[parameters('masterSubnet')]",
     "masterSubnetName": "[concat(variables('orchestratorName'), '-masterSubnet')]",
     "masterVMNamePrefix": "[concat(variables('orchestratorName'), '-master-', variables('nameSuffix'), '-')]",
     "masterVMSize": "[parameters('masterVMSize')]",
     "masterVnetSubnetID": "[concat(variables('vnetID'),'/subnets/',variables('masterSubnetName'))]",
-    "maxStorageAccountsPerAgent": "[div(variables('maxVMsPerPool'),variables('maxVMsPerStorageAccount'))]",
     "maxVMsPerPool": 100,
-    "maxVMsPerStorageAccount": 20,
     "nameSuffix": "[parameters('nameSuffix')]",
     "orchestratorName": "swarmm",
     "osImageOffer": "UbuntuServer",
     "osImagePublisher": "Canonical",
     "osImageSKU": "16.04-LTS",
-    "osImageVersion": "16.04.201703070",
+    "osImageVersion": "16.04.201706191",
     "postInstallScriptURI": "disabled",
     "sshKeyPath": "[concat('/home/', variables('adminUsername'), '/.ssh/authorized_keys')]",
     "sshRSAPublicKey": "[parameters('sshRSAPublicKey')]",
-    "storageAccountBaseName": "[uniqueString(concat(variables('masterEndpointDNSNamePrefix'),variables('location')))]",
-    "storageAccountPrefixes": [
-      "0",
-      "6",
-      "c",
-      "i",
-      "o",
-      "u",
-      "1",
-      "7",
-      "d",
-      "j",
-      "p",
-      "v",
-      "2",
-      "8",
-      "e",
-      "k",
-      "q",
-      "w",
-      "3",
-      "9",
-      "f",
-      "l",
-      "r",
-      "x",
-      "4",
-      "a",
-      "g",
-      "m",
-      "s",
-      "y",
-      "5",
-      "b",
-      "h",
-      "n",
-      "t",
-      "z"
-    ],
-    "storageAccountPrefixesCount": "[length(variables('storageAccountPrefixes'))]",
+    "storageAccountBaseName": "",
+    "storageAccountPrefixes": [],
     "virtualNetworkName": "[concat(variables('orchestratorName'), '-vnet-', variables('nameSuffix'))]",
-    "vmSizesMap": {
-      "Basic_A2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Basic_A3": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Basic_A4": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A10": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A11": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A2_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A2m_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A3": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A4": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A4_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A4m_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A5": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A6": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A7": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A8": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A8_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A8m_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_A9": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D11": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D11_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D12": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D12_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D13": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D13_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D14": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D14_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D15_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D2_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D3": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D3_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D4": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D4_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_D5_v2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_DS11": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS11_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS12": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS12_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS13": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS13_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS14": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS14_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS15_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS2_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS3": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS3_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS4": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS4_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_DS5_v2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_F16": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_F16s": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_F2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_F2s": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_F4": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_F4s": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_F8": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_F8s": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_G1": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_G2": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_G3": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_G4": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_G5": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_GS1": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_GS2": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_GS3": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_GS4": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_GS5": {
-        "storageAccountType": "Premium_LRS"
-      },
-      "Standard_H16": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_H16m": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_H16mr": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_H16r": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_H8": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_H8m": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NC12": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NC24": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NC24r": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NC6": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NV12": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NV24": {
-        "storageAccountType": "Standard_LRS"
-      },
-      "Standard_NV6": {
-        "storageAccountType": "Standard_LRS"
-      }
-    },
-    "vmsPerStorageAccount": 20,
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]"
   },
   "resources": [
     {
-      "apiVersion": "[variables('apiVersionStorage')]",
-      "copy": {
-        "count": "[variables('agentStorageAccountsCount')]",
-        "name": "vmLoopNode"
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('masterPublicIPAddressName'))]"
-      ],
-      "location": "[variables('location')]",
-      "name": "[concat(variables('storageAccountPrefixes')[mod(add(copyIndex(),variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(copyIndex(),variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName'))]",
-      "properties": {
-        "accountType": "[variables('vmSizesMap')[variables('agentVMSize')].storageAccountType]"
-      },
-      "type": "Microsoft.Storage/storageAccounts"
-    },
-    {
       "apiVersion": "[variables('apiVersionDefault')]",
       "location": "[variables('location')]",
-      "name": "[variables('agentIPAddressName')]",
+      "name": "[variables('agentpublicIPAddressName')]",
       "properties": {
         "dnsSettings": {
-          "domainNameLabel": "[variables('agentEndpointDNSNamePrefix')]"
+          "domainNameLabel": "[variables('agentpublicEndpointDNSNamePrefix')]"
         },
         "publicIPAllocationMethod": "Dynamic"
       },
@@ -780,22 +511,22 @@
     {
       "apiVersion": "[variables('apiVersionDefault')]",
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('agentIPAddressName'))]"
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('agentpublicIPAddressName'))]"
       ],
       "location": "[variables('location')]",
-      "name": "[variables('agentLbName')]",
+      "name": "[variables('agentpublicLbName')]",
       "properties": {
         "backendAddressPools": [
           {
-            "name": "[variables('agentLbBackendPoolName')]"
+            "name": "[variables('agentpublicLbBackendPoolName')]"
           }
         ],
         "frontendIPConfigurations": [
           {
-            "name": "[variables('agentLbIPConfigName')]",
+            "name": "[variables('agentpublicLbIPConfigName')]",
             "properties": {
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('agentIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('agentpublicIPAddressName'))]"
               }
             }
           }
@@ -806,18 +537,18 @@
             "name": "LBRule80",
             "properties": {
               "backendAddressPool": {
-                "id": "[concat(variables('agentLbID'), '/backendAddressPools/', variables('agentLbBackendPoolName'))]"
+                "id": "[concat(variables('agentpublicLbID'), '/backendAddressPools/', variables('agentpublicLbBackendPoolName'))]"
               },
               "backendPort": 80,
               "enableFloatingIP": false,
               "frontendIPConfiguration": {
-                "id": "[variables('agentLbIPConfigID')]"
+                "id": "[variables('agentpublicLbIPConfigID')]"
               },
               "frontendPort": 80,
               "idleTimeoutInMinutes": 5,
               "loadDistribution": "Default",
               "probe": {
-                "id": "[concat(variables('agentLbID'),'/probes/tcp80Probe')]"
+                "id": "[concat(variables('agentpublicLbID'),'/probes/tcp80Probe')]"
               },
               "protocol": "tcp"
             }
@@ -826,18 +557,18 @@
             "name": "LBRule443",
             "properties": {
               "backendAddressPool": {
-                "id": "[concat(variables('agentLbID'), '/backendAddressPools/', variables('agentLbBackendPoolName'))]"
+                "id": "[concat(variables('agentpublicLbID'), '/backendAddressPools/', variables('agentpublicLbBackendPoolName'))]"
               },
               "backendPort": 443,
               "enableFloatingIP": false,
               "frontendIPConfiguration": {
-                "id": "[variables('agentLbIPConfigID')]"
+                "id": "[variables('agentpublicLbIPConfigID')]"
               },
               "frontendPort": 443,
               "idleTimeoutInMinutes": 5,
               "loadDistribution": "Default",
               "probe": {
-                "id": "[concat(variables('agentLbID'),'/probes/tcp443Probe')]"
+                "id": "[concat(variables('agentpublicLbID'),'/probes/tcp443Probe')]"
               },
               "protocol": "tcp"
             }
@@ -846,18 +577,18 @@
             "name": "LBRule8080",
             "properties": {
               "backendAddressPool": {
-                "id": "[concat(variables('agentLbID'), '/backendAddressPools/', variables('agentLbBackendPoolName'))]"
+                "id": "[concat(variables('agentpublicLbID'), '/backendAddressPools/', variables('agentpublicLbBackendPoolName'))]"
               },
               "backendPort": 8080,
               "enableFloatingIP": false,
               "frontendIPConfiguration": {
-                "id": "[variables('agentLbIPConfigID')]"
+                "id": "[variables('agentpublicLbIPConfigID')]"
               },
               "frontendPort": 8080,
               "idleTimeoutInMinutes": 5,
               "loadDistribution": "Default",
               "probe": {
-                "id": "[concat(variables('agentLbID'),'/probes/tcp8080Probe')]"
+                "id": "[concat(variables('agentpublicLbID'),'/probes/tcp8080Probe')]"
               },
               "protocol": "tcp"
             }
@@ -896,19 +627,14 @@
       "type": "Microsoft.Network/loadBalancers"
     },
     {
-      "apiVersion": "[variables('apiVersionDefault')]",
+      "apiVersion": "[variables('apiVersionStorageManagedDisks')]",
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', variables('masterPublicIPAddressName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountPrefixes')[mod(add(0,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(0,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountPrefixes')[mod(add(1,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(1,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountPrefixes')[mod(add(2,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(2,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountPrefixes')[mod(add(3,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(3,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountPrefixes')[mod(add(4,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(4,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName'))]",
         "[variables('vnetID')]",
-        "[variables('agentLbID')]"
+        "[variables('agentpublicLbID')]"
       ],
       "location": "[variables('location')]",
-      "name": "[concat(variables('agentVMNamePrefix'), '-vmss')]",
+      "name": "[concat(variables('agentpublicVMNamePrefix'), '-vmss')]",
       "properties": {
         "upgradePolicy": {
           "mode": "Automatic"
@@ -925,11 +651,11 @@
                       "properties": {
                         "loadBalancerBackendAddressPools": [
                           {
-                            "id": "[concat(variables('agentLbID'), '/backendAddressPools/', variables('agentLbBackendPoolName'))]"
+                            "id": "[concat(variables('agentpublicLbID'), '/backendAddressPools/', variables('agentpublicLbBackendPoolName'))]"
                           }
                         ],
                         "subnet": {
-                          "id": "[variables('agentVnetSubnetID')]"
+                          "id": "[variables('agentpublicVnetSubnetID')]"
                         }
                       }
                     }
@@ -941,7 +667,7 @@
           },
           "osProfile": {
             "adminUsername": "[variables('adminUsername')]",
-            "computerNamePrefix": "[variables('agentVMNamePrefix')]",
+            "computerNamePrefix": "[variables('agentpublicVMNamePrefix')]",
             "customData": "[base64(concat('#cloud-config\n\nwrite_files:\n -  encoding: gzip\n    content: !!binary |\n        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\n    path: /opt/azure/containers/configure-swarmmode-cluster.sh\n    permissions: \"0744\"\n\n',variables('agentRunCmdFile'),variables('agentRunCmd')))]",
             "linuxConfiguration": {
               "disablePasswordAuthentication": "true",
@@ -960,44 +686,24 @@
               "offer": "[variables('osImageOffer')]",
               "publisher": "[variables('osImagePublisher')]",
               "sku": "[variables('osImageSKU')]",
-              "version": "latest"
+              "version": "[variables('osImageVersion')]"
             },
             "osDisk": {
               "caching": "ReadWrite",
-              "createOption": "FromImage",
-              "name": "vmssosdisk",
-              "vhdContainers": [
-                "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('storageAccountPrefixes')[mod(add(0,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(0,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName')), variables('apiVersionStorage') ).primaryEndpoints.blob, 'osdisk')]",
-                "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('storageAccountPrefixes')[mod(add(1,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(1,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName')), variables('apiVersionStorage')).primaryEndpoints.blob, 'osdisk')]",
-                "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('storageAccountPrefixes')[mod(add(2,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(2,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName')), variables('apiVersionStorage')).primaryEndpoints.blob, 'osdisk')]",
-                "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('storageAccountPrefixes')[mod(add(3,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(3,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName')), variables('apiVersionStorage')).primaryEndpoints.blob, 'osdisk')]",
-                "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('storageAccountPrefixes')[mod(add(4,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('storageAccountPrefixes')[div(add(4,variables('agentStorageAccountOffset')),variables('storageAccountPrefixesCount'))],variables('agentAccountName')), variables('apiVersionStorage')).primaryEndpoints.blob, 'osdisk')]"
-              ]
+              "createOption": "FromImage"
             }
           }
         }
       },
       "sku": {
-        "capacity": "[variables('agentCount')]",
-        "name": "[variables('agentVMSize')]",
-        "tier": "Standard"
+        "capacity": "[variables('agentpublicCount')]",
+        "name": "[variables('agentpublicVMSize')]",
+        "tier": "[variables('agentpublicVMSizeTier')]"
       },
       "tags": {
-        "creationSource": "[concat('acsengine-', variables('agentVMNamePrefix'), '-vmss')]"
+        "creationSource": "[concat('acsengine-', variables('agentpublicVMNamePrefix'), '-vmss')]"
       },
       "type": "Microsoft.Compute/virtualMachineScaleSets"
-    },
-    {
-      "apiVersion": "[variables('apiVersionStorage')]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('masterPublicIPAddressName'))]"
-      ],
-      "location": "[variables('location')]",
-      "name": "[variables('masterStorageAccountName')]",
-      "properties": {
-        "accountType": "[variables('vmSizesMap')[variables('masterVMSize')].storageAccountType]"
-      },
-      "type": "Microsoft.Storage/storageAccounts"
     },
     {
       "apiVersion": "[variables('apiVersionDefault')]",
@@ -1007,7 +713,7 @@
         "addressSpace": {
           "addressPrefixes": [
             "[variables('masterSubnet')]",
-            "[variables('agentSubnet')]"
+            "[variables('agentpublicSubnet')]"
           ]
         },
         "subnets": [
@@ -1018,9 +724,9 @@
             }
           },
           {
-            "name": "[variables('agentSubnetName')]",
+            "name": "[variables('agentpublicSubnetName')]",
             "properties": {
-              "addressPrefix": "[variables('agentSubnet')]"
+              "addressPrefix": "[variables('agentpublicSubnet')]"
             }
           }
         ]
@@ -1028,10 +734,14 @@
       "type": "Microsoft.Network/virtualNetworks"
     },
     {
-      "apiVersion": "[variables('apiVersionDefault')]",
+      "apiVersion": "[variables('apiVersionStorageManagedDisks')]",
       "location": "[variables('location')]",
       "name": "[variables('masterAvailabilitySet')]",
-      "properties": {},
+      "properties": {
+        "managed": "true",
+        "platformFaultDomainCount": "2",
+        "platformUpdateDomainCount": "3"
+      },
       "type": "Microsoft.Compute/availabilitySets"
     },
     {
@@ -1149,15 +859,14 @@
       "type": "Microsoft.Network/networkInterfaces"
     },
     {
-      "apiVersion": "[variables('apiVersionDefault')]",
+      "apiVersion": "[variables('apiVersionStorageManagedDisks')]",
       "copy": {
         "count": "[variables('masterCount')]",
         "name": "vmLoopNode"
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('masterVMNamePrefix'), 'nic-', copyIndex())]",
-        "[concat('Microsoft.Compute/availabilitySets/',variables('masterAvailabilitySet'))]",
-        "[variables('masterStorageAccountName')]"
+        "[concat('Microsoft.Compute/availabilitySets/',variables('masterAvailabilitySet'))]"
       ],
       "location": "[variables('location')]",
       "name": "[concat(variables('masterVMNamePrefix'), copyIndex())]",
@@ -1200,11 +909,7 @@
           },
           "osDisk": {
             "caching": "ReadWrite",
-            "createOption": "FromImage",
-            "name": "[concat(variables('masterVMNamePrefix'), copyIndex(),'-osdisk')]",
-            "vhd": {
-              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('masterStorageAccountName')), variables('apiVersionStorage')).primaryEndpoints.blob, 'vhds/', variables('masterVMNamePrefix'), copyIndex(), '-osdisk.vhd')]"
-            }
+            "createOption": "FromImage"
           }
         }
       },
@@ -1231,16 +936,15 @@
           "fileUris": []
         },
         "type": "CustomScriptForLinux",
-        "typeHandlerVersion": "1.4",
-        "autoUpgradeMinorVersion": "true"
+        "typeHandlerVersion": "1.4"
       },
       "type": "Microsoft.Compute/virtualMachines/extensions"
     }
   ],
   "outputs": {
-    "agentFQDN": {
+    "agentpublicFQDN": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', variables('agentIPAddressName'))).dnsSettings.fqdn]"
+      "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', variables('agentpublicIPAddressName'))).dnsSettings.fqdn]"
     },
     "masterFQDN": {
       "type": "string",
