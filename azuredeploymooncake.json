@@ -352,7 +352,7 @@
       "type": "string"
     },
     "targetEnvironment": {
-      "defaultValue": "AzureCloud",
+      "defaultValue": "AzureChinaCloud",
       "metadata": {
         "description": "The azure deploy environment. Currently support: AzureCloud, AzureChinaCloud"
       },
