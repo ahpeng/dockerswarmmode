@@ -381,7 +381,7 @@
     },
     "osImageVersion": {
       "type": "string",
-      "defaultValue": "1.0.0",
+      "defaultValue": "16.04.20170811",
       "metadata": {
         "description": "Maps to the sku in the Azure Stack Platform Image Repository."
       }
