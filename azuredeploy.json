@@ -105,7 +105,7 @@
         99,
         100
       ],
-      "defaultValue": 3,
+      "defaultValue": 2,
       "metadata": {
         "description": "The number of agents for the cluster.  This value can be from 1 to 100"
       },
@@ -381,7 +381,7 @@
     },
     "osImageVersion": {
       "type": "string",
-      "defaultValue": "16.04.20170811",
+      "defaultValue": "1.0.0",
       "metadata": {
         "description": "Maps to the sku in the Azure Stack Platform Image Repository."
       }
@@ -418,7 +418,7 @@
     "dataStorageAccountPrefixSeed": 97,
     "location": "[resourceGroup().location]",
     "masterAvailabilitySet": "[concat(variables('orchestratorName'), '-master-availabilitySet-', variables('nameSuffix'))]",
-    "masterCount": 3,
+    "masterCount": 1,
     "masterCustomScript": "[concat('/bin/bash -c \"/bin/bash /opt/azure/containers/',variables('configureClusterScriptFile'), ' ',variables('clusterInstallParameters'),' >> /var/log/azure/cluster-bootstrap.log 2>&1\"')]",
     "masterEndpointDNSNamePrefix": "[tolower(parameters('masterEndpointDNSNamePrefix'))]",
     "masterFirstAddrOctet4": "[variables('masterFirstAddrOctets')[3]]",
