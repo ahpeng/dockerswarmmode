@@ -226,7 +226,7 @@
         "Standard_NV24",
         "Standard_NV6"
       ],
-      "defaultValue": "Standard_D2_v2",
+      "defaultValue": "Standard_D1_v2",
       "metadata": {
         "description": "The size of the Virtual Machine."
       },
@@ -361,6 +361,7 @@
         "Standard_NV24",
         "Standard_NV6"
       ],
+      "defaultValue": "Standard_D1_v2",
       "metadata": {
         "description": "The size of the Virtual Machine."
       },
